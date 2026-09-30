@@ -2,57 +2,54 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Buket yang Mekar</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;600&display=swap">
 <style>
 :root{--bg:#10282b;--fg:#f2ece4;--muted:#9db8b4;--sky1:#1b4247;--sky2:#0d2225;--btn:#f2ece4;--btnfg:#10282b;--track:#ffffff26;--water:#7fd0ff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#e4f0ea;--fg:#14302c;--muted:#4c6b66;--sky1:#f7fbf8;--sky2:#bfdccf;--btn:#14302c;--btnfg:#f2ece4;--track:#14302c22;--water:#2a9be0}}
-:root[data-theme="dark"]{--bg:#10282b;--fg:#f2ece4;--muted:#9db8b4;--sky1:#1b4247;--sky2:#0d2225}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-html{height:100%}
-body{min-height:100%;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:'Figtree',system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
-h1{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:clamp(28px,6vw,40px);margin:0;text-align:center}
-svg{width:min(100%,440px,max(300px,37vh));height:auto;aspect-ratio:400/540;border-radius:24px;display:block;overflow:hidden}
-.info{width:min(100%,440px);display:flex;flex-direction:column;gap:10px}
-.track{height:8px;border-radius:99px;background:var(--track);overflow:hidden}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#e4f0ea;--fg:#14302c;--muted:#4c6b66;--btn:#14302c;--btnfg:#f2ece4;--track:#14302c22;--water:#2a9be0}}
+:root[data-theme="dark"]{--bg:#10282b;--fg:#f2ece4;--muted:#9db8b4}
+html{height:100vh;height:100dvh;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:'Figtree',system-ui,sans-serif;display:flex;justify-content:center;overflow:hidden}
+[hidden]{display:none!important}
+.app{width:100%;max-width:460px;height:100%;display:flex;flex-direction:column;gap:8px;padding:8px 14px 10px;box-sizing:border-box}
+header{flex:none;text-align:center;min-height:0}
+h1{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:clamp(20px,5.4vw,27px);line-height:1.15;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hope{margin:2px 0 0;font-size:13px;color:var(--muted);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stage{flex:1 1 0;min-height:0;display:flex;align-items:center;justify-content:center;container-type:size}
+svg{width:min(100cqw,calc(100cqh*.7407));height:auto;aspect-ratio:400/540;border-radius:20px;display:block;overflow:hidden}
+.panel{flex:none;display:flex;flex-direction:column;gap:7px}
+.track{height:6px;border-radius:99px;background:var(--track);overflow:hidden}
 #bar{height:100%;width:0;background:var(--water);border-radius:99px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
-#cap{margin:0;color:var(--muted)}
-button{font:600 15px 'Figtree',system-ui,sans-serif;background:var(--btn);color:var(--btnfg);border:0;border-radius:99px;padding:10px 20px;cursor:pointer}
-button:focus-visible{outline:3px solid var(--water);outline-offset:3px}
-.ctl{width:min(100%,440px);display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
-.dur{display:flex;align-items:center;gap:12px}
-.dur label{white-space:nowrap;font-weight:600}
-.dur input{flex:1;accent-color:var(--water);min-width:0}
-.dur span{min-width:64px;text-align:right;color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{background:transparent;color:var(--fg);border:1.5px solid var(--muted);padding:9px 14px}
-.chip:hover:not(:disabled){border-color:var(--water)}
-.chip:active:not(:disabled){transform:scale(.96)}
-.chip:disabled{opacity:.4;cursor:default}
-.own{flex:1;min-width:0;padding:10px 16px;border-radius:99px;border:1.5px solid var(--muted);background:transparent;color:var(--fg);font:inherit}
-.own:focus-visible{outline:3px solid var(--water);outline-offset:2px}
-.ghost{background:transparent;color:var(--muted);border:1.5px solid var(--track);padding:8px 14px;font-size:13px}
-.dots{display:grid;grid-template-columns:repeat(15,1fr);gap:5px}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.small{margin:0;font-size:13px;color:var(--muted)}
+.dots{display:grid;grid-template-columns:repeat(30,1fr);gap:3px}
 .dot{aspect-ratio:1;border-radius:50%;background:var(--track)}
 .dot.on{background:var(--water)}
-.chip[aria-pressed="true"]{border-color:var(--water);background:color-mix(in srgb,var(--water) 20%,transparent)}
+#cap{margin:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:1.3em}
+button{font:600 14px 'Figtree',system-ui,sans-serif;background:var(--btn);color:var(--btnfg);border:0;border-radius:99px;padding:9px 18px;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--water);outline-offset:3px}
 button:disabled{opacity:.45;cursor:default}
-[hidden]{display:none!important}
-.hope{margin:0;max-width:440px;text-align:center;color:var(--muted);font-style:italic}
-.setup,.ctl0{display:flex;flex-direction:column;gap:12px}
-.setup .own{width:100%;box-sizing:border-box;flex:none}
-.remind{border:1.5px solid var(--track);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px}
-.remind.now{border-color:var(--water)}
-.remind .row{justify-content:flex-start;flex-wrap:wrap}
-.lk{display:inline-block;background:var(--btn);color:var(--btnfg);border-radius:99px;padding:9px 16px;font:600 13px 'Figtree',system-ui,sans-serif;text-decoration:none}
-.lk:focus-visible{outline:3px solid var(--water);outline-offset:3px}
-details.rec summary{cursor:pointer;font-weight:600}
-details.rec ol{margin:8px 0 0;padding-left:22px;color:var(--muted);font-size:14px}
-.small{margin:0;font-size:13px;color:var(--muted)}
+.ghost{background:transparent;color:var(--muted);border:1.5px solid var(--track);padding:5px 12px;font-size:13px}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:1px 0 3px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;white-space:nowrap;background:transparent;color:var(--fg);border:1.5px solid var(--muted);padding:8px 13px;font-size:13px}
+.chip:hover:not(:disabled){border-color:var(--water)}
+.chip:active:not(:disabled){transform:scale(.96)}
+.chip:disabled{opacity:.4}
+.chip[aria-pressed="true"]{border-color:var(--water);background:color-mix(in srgb,var(--water) 20%,transparent)}
+.row,.dur{display:flex;align-items:center;gap:8px}
+.own{flex:1;min-width:0;width:100%;box-sizing:border-box;padding:9px 15px;border-radius:99px;border:1.5px solid var(--muted);background:transparent;color:var(--fg);font:inherit;font-size:16px}
+.own:focus-visible{outline:3px solid var(--water);outline-offset:2px}
+.setup,.wbox{display:flex;flex-direction:column;gap:7px}
+.remind{display:flex;align-items:center;gap:10px;border:1.5px solid var(--water);border-radius:14px;padding:8px 10px}
+.remind .small{flex:1;font-size:12.5px;line-height:1.3;color:var(--fg)}
+.lk{flex:none;background:var(--btn);color:var(--btnfg);border-radius:99px;padding:8px 13px;font:600 13px 'Figtree',system-ui,sans-serif;text-decoration:none;text-align:center}
+.sheet{position:fixed;inset:0;background:#000a;display:flex;align-items:flex-end;justify-content:center;z-index:10}
+.sheet .box{background:var(--bg);color:var(--fg);width:100%;max-width:460px;max-height:80vh;max-height:80dvh;overflow:auto;border-radius:20px 20px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+.sheet h2{margin:0;font:400 20px 'Young Serif',Georgia,serif}
+.sheet ol{margin:0;padding-left:22px;color:var(--muted);font-size:14px}
 .st{animation:tw 3s ease-in-out infinite}
 @keyframes tw{50%{opacity:.35}}
 .cl{animation:drift 60s ease-in-out infinite alternate}
@@ -61,9 +58,9 @@ details.rec ol{margin:8px 0 0;padding-left:22px;color:var(--muted);font-size:14p
 </style>
 </head>
 <body>
-<h1 id="ttl">Beri nama bungamu</h1>
-<p id="hope" class="hope" hidden></p>
-<svg id="s" viewBox="0 0 400 540" role="img" aria-label="Animasi buket bunga yang disiram lalu mekar">
+<main class="app">
+  <header><h1 id="ttl">Beri nama bungamu</h1><p id="hope" class="hope" hidden></p></header>
+  <div class="stage"><svg id="s" viewBox="0 0 400 540" role="img" aria-label="Animasi buket bunga yang disiram lalu mekar">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop id="sk1" offset="0" style="stop-color:var(--sky1)"/><stop id="sk2" offset="1" style="stop-color:var(--sky2)"/></linearGradient>
   </defs>
@@ -103,37 +100,40 @@ details.rec ol{margin:8px 0 0;padding-left:22px;color:var(--muted);font-size:14p
       <rect x="-26" y="6" width="60" height="6" rx="3" fill="#7fa9b4" opacity=".6"/>
     </g>
   </g>
-</svg>
-<div class="info">
-  <div class="track" aria-hidden="true"><div id="bar"></div></div>
-  <p id="prog" class="small" aria-hidden="true">Sudah disiram 0 dari 30 hari</p>
-  <div id="days" class="dots" aria-hidden="true"></div>
-  <div class="row"><p id="cap" aria-live="polite">Pilih kata semangat untuk mulai menyiram.</p></div>
-</div>
-<div class="ctl">
-  <div id="setup" class="setup">
-    <p class="small">Sebelum menyiram, beri nama bungamu dan tulis harapanmu.</p>
-    <input id="nm" class="own" type="text" maxlength="40" placeholder="Nama bunga, misalnya Bunga Semangatku" aria-label="Nama bunga">
-    <input id="hp" class="own" type="text" maxlength="140" placeholder="Harapanmu untuk 30 hari ke depan" aria-label="Harapan">
-    <button id="start" type="button">Mulai menanam</button>
-    <p id="smsg" class="small" aria-live="polite"></p>
+</svg></div>
+  <section class="panel">
+    <div class="track" aria-hidden="true"><div id="bar"></div></div>
+    <div class="meta"><span id="prog" class="small" aria-hidden="true">Belum ditanam</span><button id="recbox" class="ghost" type="button" hidden>Catatan</button></div>
+    <div id="days" class="dots" aria-hidden="true"></div>
+    <p id="cap" aria-live="polite">Beri nama dan harapan dulu ya.</p>
+    <div id="setup" class="setup">
+      <input id="nm" class="own" type="text" maxlength="40" placeholder="Nama bunga, misalnya Bunga Semangatku" aria-label="Nama bunga">
+      <input id="hp" class="own" type="text" maxlength="140" placeholder="Harapanmu untuk 30 hari ke depan" aria-label="Harapan">
+      <button id="start" type="button">Mulai menanam</button>
+      <p id="smsg" class="small" aria-live="polite"></p>
+    </div>
+    <div id="waterbox" class="wbox" hidden>
+      <div class="chips" id="chipbox" role="group" aria-label="Pilihan kalimat semangat"><button type="button" class="chip">Aku pasti bisa</button><button type="button" class="chip">I can do this</button><button type="button" class="chip">Aku layak bahagia</button><button type="button" class="chip">I am enough</button><button type="button" class="chip">Aku terus tumbuh</button><button type="button" class="chip">I keep growing</button><button type="button" class="chip">Aku tidak menyerah</button><button type="button" class="chip">Never give up</button><button type="button" class="chip">Aku berani mulai</button><button type="button" class="chip">I choose joy</button><button type="button" class="chip">Hari ini luar biasa</button><button type="button" class="chip">I am strong</button></div>
+      <div class="dur"><input id="own" class="own" type="text" maxlength="60" placeholder="Pilih di atas atau tulis sendiri" aria-label="Kalimat semangat hari ini"><button id="go" type="button">Siram</button></div>
+    </div>
+    <div id="remind" class="remind" hidden>
+      <p id="remtxt" class="small"></p>
+      <a id="wa" class="lk" target="_blank" rel="noopener">Kirim ke WhatsApp</a>
+    </div>
+  </section>
+</main>
+<div id="sheet" class="sheet" hidden>
+  <div class="box" role="dialog" aria-modal="true" aria-label="Catatan penyiraman">
+    <h2>Catatan penyiraman</h2>
+    <p id="rmeta" class="small"></p>
+    <ol id="rec"></ol>
+    <div class="row"><button id="again" class="ghost" type="button">Mulai dari awal</button><button id="close" type="button">Tutup</button></div>
   </div>
-  <div id="waterbox" class="ctl0" hidden>
-    <p class="small">Bunga mekar setelah 30 hari disiram. Satu hari hanya bisa satu kalimat semangat.</p>
-    <div class="chips" id="chipbox" role="group" aria-label="Pilihan kalimat semangat"><button type="button" class="chip">Aku pasti bisa</button><button type="button" class="chip">I can do this</button><button type="button" class="chip">Aku layak bahagia</button><button type="button" class="chip">I am enough</button><button type="button" class="chip">Aku terus tumbuh</button><button type="button" class="chip">I keep growing</button><button type="button" class="chip">Aku tidak menyerah</button><button type="button" class="chip">Never give up</button><button type="button" class="chip">Aku berani mulai</button><button type="button" class="chip">I choose joy</button><button type="button" class="chip">Hari ini luar biasa</button><button type="button" class="chip">I am strong</button></div>
-    <div class="dur"><input id="own" class="own" type="text" maxlength="60" placeholder="Pilih di atas atau tulis kalimatmu sendiri" aria-label="Kalimat semangat hari ini"><button id="go" type="button">Siram</button></div>
-  </div>
-  <div id="remind" class="remind now" hidden>
-    <p id="remtxt" class="small"></p>
-    <div class="row"><a id="wa" class="lk" target="_blank" rel="noopener">Kirim pengingat ke WhatsApp</a></div>
-  </div>
-  <details id="recbox" class="rec" hidden><summary>Catatan penyiraman</summary><ol id="rec"></ol></details>
-  <div class="row"><button id="again" class="ghost" type="button">Mulai dari awal</button></div>
 </div>
 <script>
 (function(){
 var NS='http://www.w3.org/2000/svg',$=function(i){return document.getElementById(i)};
-var setup=$('setup'),waterbox=$('waterbox'),ttl=$('ttl'),hopeEl=$('hope'),remind=$('remind'),remtxt=$('remtxt'),wa=$('wa'),rec=$('rec'),recBox=$('recbox'),own=$('own'),go=$('go'),dots=$('days'),again=$('again'),prog=$('prog'),chips=[].slice.call(document.querySelectorAll('.chip')),svg=$('s'),heads=$('heads'),stems=$('stems'),fx=$('fx'),can=$('can'),bar=$('bar'),cap=$('cap');
+var sheet=$('sheet'),rmeta=$('rmeta'),setup=$('setup'),waterbox=$('waterbox'),ttl=$('ttl'),hopeEl=$('hope'),remind=$('remind'),remtxt=$('remtxt'),wa=$('wa'),rec=$('rec'),recBox=$('recbox'),own=$('own'),go=$('go'),dots=$('days'),again=$('again'),prog=$('prog'),chips=[].slice.call(document.querySelectorAll('.chip')),svg=$('s'),heads=$('heads'),stems=$('stems'),fx=$('fx'),can=$('can'),bar=$('bar'),cap=$('cap');
 var speed=matchMedia('(prefers-reduced-motion: reduce)').matches?3:1;
 function mk(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
 function cl(v,a,b){return Math.max(a,Math.min(b,v))}
@@ -339,15 +339,15 @@ function refresh(){
   hopeEl.textContent=has?'“'+store.hope+'”':'';hopeEl.hidden=!has;
   chips.forEach(function(c){c.disabled=!ok});own.disabled=!ok;go.disabled=!ok||!own.value.trim();
   dd.forEach(function(e,i){e.className='dot'+(i<n?' on':'');e.title=store.log[i]?store.log[i].d+' · '+store.log[i].t:''});
-  prog.textContent=pv?'Pratinjau cepat, tidak disimpan':has?'Ditanam '+store.start+' · disiram '+n+' dari 30 hari':'Belum ditanam';
+  prog.textContent=pv?'Pratinjau cepat, tidak disimpan':has?'Disiram '+n+' dari 30 hari':'Belum ditanam';
   while(rec.firstChild)rec.removeChild(rec.firstChild);
   store.log.forEach(function(e){var li=document.createElement('li');li.textContent=e.d+' · '+e.t;rec.appendChild(li)});
-  recBox.hidden=!n;
+  recBox.hidden=!has;rmeta.textContent=has?'Ditanam '+store.start+' · disiram '+n+' dari 30 hari':'';
   var left=30-n,show=has&&!pv&&left>0&&left<=6;remind.hidden=!show;
   if(show){
     var msg='Halo! Bunga “'+store.name+'” tinggal '+left+' hari lagi mekar. Harapanmu: “'+store.hope+'”. Ayo lanjut menyiram dengan satu kalimat semangat setiap hari ya!';
     wa.href='https://wa.me/6287741862614?text='+encodeURIComponent(msg);
-    remtxt.textContent='H-6! Tinggal '+left+' hari lagi '+store.name+' mekar. Kirim pengingat ke WhatsApp supaya tetap lanjut menyiram.';
+    remtxt.textContent='H-6! Tinggal '+left+' hari lagi '+store.name+' mekar. Kirim pengingat supaya lanjut menyiram.';
   }
 }
 function resetView(){
@@ -416,10 +416,10 @@ function frame(now){
   });
   bar.style.width=(water*100)+'%';
   var n=store.log.length;
-  if(done)say(pv?'Pratinjau selesai. Klik “Selesai pratinjau”.':T-doneT<2?'Hampir selesai…':T-doneT<5?'Sudah mekar semuanya.':'Selamat! 30 hari terlewati dan bunganya mekar penuh.');
+  if(done)say(pv?'Pratinjau selesai.':T-doneT<2?'Hampir selesai…':T-doneT<5?'Sudah mekar semuanya.':'Selamat, 30 hari selesai! Mekar penuh 🌸');
   else if(pr>0||pour>.05)say(pv?'Pratinjau: bunga mekar dipercepat…':'Menyiram…');
-  else if(!store.name)say('Beri nama bunga dan tulis harapanmu dulu.');
-  else if(wToday)say('Hari ini sudah disiram. Kembali lagi besok ya.');
+  else if(!store.name)say('Beri nama dan harapan dulu ya.');
+  else if(wToday)say('Hari ini sudah disiram. Sampai besok!');
   else say(n?'Hari ke-'+(n+1)+': tulis satu kalimat semangat.':'Tulis satu kalimat semangat untuk siram hari pertama.');
   stepBF(dt);
   requestAnimationFrame(frame);
@@ -448,10 +448,14 @@ $('start').addEventListener('click',function(){
   store.name=nm.slice(0,40);store.hope=hp.slice(0,140);store.wa='';store.start=key();
   sm.textContent='';saveAll();refresh();
 });
+recBox.addEventListener('click',function(){sheet.hidden=false;$('close').focus()});
+$('close').addEventListener('click',function(){sheet.hidden=true;recBox.focus()});
+sheet.addEventListener('click',function(e){if(e.target===sheet)sheet.hidden=true});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')sheet.hidden=true});
 var armed=0;
 again.addEventListener('click',function(){
   if(!armed){armed=1;again.textContent='Yakin? Klik lagi';setTimeout(function(){armed=0;again.textContent='Mulai dari awal'},4000);return}
-  armed=0;again.textContent='Mulai dari awal';store={log:[],name:'',hope:'',wa:'',start:''};saveAll();pv=false;resetView();
+  armed=0;again.textContent='Mulai dari awal';store={log:[],name:'',hope:'',wa:'',start:''};saveAll();pv=false;sheet.hidden=true;resetView();
 });
 setInterval(refresh,20000);
 document.addEventListener('visibilitychange',refresh);
